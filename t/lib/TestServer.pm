@@ -14,8 +14,6 @@ use Test::More;
 use Exporter qw/import/;
 use FindBin;
 
-our $ACTIVEMQ_VERSION = '5.2.0';
-
 our @EXPORT = qw/ start_server check_amq_broker /;
 
 my $mq;
@@ -28,12 +26,12 @@ sub check_amq_broker {
     };
     if ($@) {
 
-        unless (Alien::ActiveMQ->is_version_installed($ACTIVEMQ_VERSION)) {
+        unless (Alien::ActiveMQ->is_version_installed()) {
             plan 'skip_all' => 'No ActiveMQ server installed by Alien::ActiveMQ, try running the "install-activemq" command';
             exit;
         }
 
-        $mq ||= Alien::ActiveMQ->run_server($ACTIVEMQ_VERSION);
+        $mq ||= Alien::ActiveMQ->run_server();
 
         eval {
             $stomp = Net::Stomp->new( { hostname => 'localhost', port => 61613 } );
