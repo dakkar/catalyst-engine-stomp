@@ -88,6 +88,9 @@ has trust_jmstype => (
     default => 0,
 );
 
+has enabled => (
+ is => 'ro', isa => 'Bool', default => 1,
+);
 
 sub begin : Private {
     my ($self, $c) = @_;

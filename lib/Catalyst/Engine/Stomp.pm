@@ -328,6 +328,7 @@ sub _collect_destinations {
     my @dests;
     for my $ctrl_name ($app->controllers) {
         my $ctrl = $app->controller($ctrl_name);
+        next unless $ctrl->enabled;
         my $dest_call = $ctrl->can('stomp_destination');
         my $subh_call = $ctrl->can('stomp_subscribe_headers');
         my ($unq_dest,$q_dest,$subh);

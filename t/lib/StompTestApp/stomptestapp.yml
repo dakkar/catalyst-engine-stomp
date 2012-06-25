@@ -6,3 +6,9 @@ name: StompTestApp
     - hostname: localhost
       port: 61613
   utf8: 1
+
+'Controller::DisabledController':
+  enabled: 0
+
+'Controller::NotDisabledController':
+  enabled: 1
